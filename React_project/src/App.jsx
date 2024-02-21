@@ -5,13 +5,12 @@ import SecondCard from './Components/SecondCard'
 import Props from './Components/Props'
 import DummyCard from './Components/DummyCard'
 function App() {
-  const data = [
-    {name: "Nasir Ali", profession: "Coder", image:"https://i.pinimg.com/564x/82/19/e9/8219e955fd50a0eb26959d17f4b173c7.jpg"},
-    {name: "John Doe", profession: "Artist", image:"https://i.pinimg.com/736x/57/e7/ec/57e7ec4157f902dc672ef15c43925ae9.jpg"},
-    {name: "Rahulz", profession: "Painter", image:"https://i.pinimg.com/564x/63/31/18/633118d76f56a929855799e84bfd723e.jpg"}
-  
+  const raw = [
+    {name: "Nasir Ali", Profession: "Coder", image: 'https://images.unsplash.com/photo-1480997173806-f69bb3b35b84?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
+    {name: "Abhay Yadav", Profession: "Artist", image: 'https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
+    {name: "Adarsh Raj", Profession: "Business Man", image: 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
+    {name: "Archil Sachan", Profession: "Momos Wala", image: 'https://www.tripsavvy.com/thmb/gYRhS5rFVb3Xz3y7xvzY9FrExS4=/2120x1414/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-503908259-59493c463df78c537bf936d8.jpg'}
   ]
-  const [realData, setReadData] = useState(data);
   return (
     <>
       {/* <Card/> */}
@@ -19,11 +18,11 @@ function App() {
       {/* <SecondCard/> */}
       {/* <Props text='Know More' color='bg-blue-600'/>
        <Props text='Download' color='bg-red-700'/> */}
-     <div className='w-full h-screen bg-zinc-300 flex gap-4 justify-center items-center'>
-        {data.map((item, index)=>(
-          <DummyCard key={index} dummy={dummy} values={item}/>
-        ))}
-     </div>
+       <div className='bg-zinc-300 h-screen w-full flex items-center justify-center gap-4'>
+     {raw.map((item, index)=>(
+      <DummyCard value={item}/>
+     ))}
+       </div>
     </>
 
   )
