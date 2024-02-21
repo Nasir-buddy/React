@@ -6,7 +6,7 @@ import Props from './Components/Props'
 import DummyCard from './Components/DummyCard'
 import Card_2 from './Components/Card_2'
 import Navbar from './Components/Navbar'
-// These data is for practicing the map and button click handlers
+import Form from './Components/Form'// These data is for practicing the map and button click handlers
 function App() {
   const raw = [
     { name: "Nasir Ali", Profession: "Coder", image: 'https://images.unsplash.com/photo-1480997173806-f69bb3b35b84?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', friend: false },
@@ -59,14 +59,15 @@ function App() {
       <DummyCard key={index} index={index} friendButtonHandle={handlClick} value={item}/>
      ))}
        </div> */}
-      <div className='w-full h-screen bg-zinc-300'>
+      {/* <div className='w-full h-screen bg-zinc-300'>
         <Navbar data={songData}/>
         <div className='p-4 px-12 flex flex-wrap gap-12 mt-10'>
           {songData.map((item, index)=>{
             return <Card_2 key={index} index={index} hcb={handleCardButton} data={item}/>
           })}
         </div>
-      </div>
+      </div> */}
+      <Form />
 
     </>
 
