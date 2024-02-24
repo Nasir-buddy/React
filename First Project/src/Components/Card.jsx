@@ -2,11 +2,17 @@ import React from 'react'
 import { FaFileCode } from "react-icons/fa6";
 import { LuDownload } from "react-icons/lu";
 import { IoClose } from "react-icons/io5";
+import { motion } from "framer-motion"
 
-function Card({data}) {
+function Card({data, reference}) {
   return (
-    <div>
-      <div className='relative w-60 h-72 rounded-[40px] bg-zinc-900/80 text-white overflow-hidden px-8 py-10'>
+      <motion.div
+       drag dragConstraints={reference} 
+       whileDrag={{scale:1.2}} 
+       dragElastic={.1} 
+       className='relative w-60 h-72 rounded-[40px] bg-zinc-900/80 text-white overflow-hidden px-8 py-10'
+       dragTransition={{ bounceStiffness: 100, bounceDamping: 20}}
+       >
         <FaFileCode />
         <p className='font-semibold text-sm leading-tight mt-5'>{data.desc}</p>
         <div className='footer absolute bottom-0 w-full left-0'>
@@ -22,8 +28,7 @@ function Card({data}) {
           </div>)
           }
         </div>
-      </div>
-    </div>
+      </motion.div>
   )
 }
 

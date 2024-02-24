@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Card from './Card'
 
 function Foreground() {
+    const ref = useRef(null);
     const data = [
         {
              desc: "This is the background color of the card that will be displayed", 
@@ -29,9 +30,9 @@ function Foreground() {
         },
     ]
     return (
-        <div className='fixed w-full h-screen top-0 left-0 z-[3] p-5 flex flex-wrap gap-5'>
+        <div ref={ref} className='fixed w-full h-screen top-0 left-0 z-[3] p-5 flex flex-wrap gap-5'>
            {data.map((item, index)=>(
-            <Card key={index} data={item}/>
+            <Card key={index} data={item} reference={ref}/>
            ))}
         </div>
 
