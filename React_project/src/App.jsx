@@ -7,6 +7,9 @@ import DummyCard from './Components/DummyCard'
 import Card_2 from './Components/Card_2'
 import Navbar from './Components/Navbar'
 import Form from './Components/Form'// These data is for practicing the map and button click handlers
+import ReactHookForm from './Components/ReactHookForm'
+import Fcards from './Components/Fcards'
+import Form_2 from './Components/Form_2'
 function App() {
   const raw = [
     { name: "Nasir Ali", Profession: "Coder", image: 'https://images.unsplash.com/photo-1480997173806-f69bb3b35b84?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', friend: false },
@@ -47,6 +50,15 @@ function App() {
       })
     })
   }
+
+  const [users, setUsers] = useState([]);
+
+  const handleFormSubmitData = (data)=>{
+    setUsers([...users, data]);
+  }
+  const handleFormRemove =(id)=>{
+    setUsers(()=>users.filter((item, index)=> index != id))
+  }
   return (
     <>
       {/* <Card/> */}
@@ -67,7 +79,13 @@ function App() {
           })}
         </div>
       </div> */}
-      <Form />
+      {/* <Form /> */}
+      <div className='w-full h-screen bg-zinc-500 flex items-center justify-center'>
+        <div className='container mx-auto'>
+          <Fcards handleFormRemove={handleFormRemove} users={users}/>
+          <Form_2 handleFormSubmitData={handleFormSubmitData}/>
+        </div>
+      </div>
 
     </>
 
