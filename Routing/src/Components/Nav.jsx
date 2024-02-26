@@ -9,12 +9,12 @@ function Nav() {
                         color: e.isActive ? "red" : "",
                         fontWeight: e.isActive ? 'bold' : ''
                     }
-                }} to={"/Home"}>Home</NavLink>
+                }} to={"/"}>Home</NavLink>
                 <NavLink style={(e) => {
                     return {
                         color: e.isActive ? 'red' : '',
                         fontWeight: e.isActive ? 'bold' : ''
-                    }
+                    } 
                 }} to={"/about"}>About</NavLink>
                 <NavLink style={(e) => {
                     return {

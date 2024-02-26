@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 function Routing() {
     return (
         <Routes>
-            <Route path='/home' element={<Home />} />
+            <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/user' element={<User />} />
         </Routes>
