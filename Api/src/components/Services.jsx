@@ -8,7 +8,7 @@ function Services() {
         return ()=>{
             console.log("Service component is destroyed");
         }
-    })
+    },[])
   return (
     <div>
         <h1>{first}</h1>
