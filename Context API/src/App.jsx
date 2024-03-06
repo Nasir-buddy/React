@@ -8,8 +8,8 @@ function App() {
 
 
   return (
-    <div className='w-full h-screen bg-zinc-200'>
-      <nav className='flex justify-center gap-3 py-2'>
+    <div className='p-1  container m-auto rounded-md bg-zinc-200 '>
+      <nav className='flex justify-center gap-3'>
         <Link to='/'>Home</Link>
         <Link to='/user'>User</Link>
         <Link to='/about'>About</Link>
@@ -21,7 +21,6 @@ function App() {
         <Route path='/about' element={<About />}></Route>
       </Routes>
 
-      <Home />
     </div>
   )
 }
