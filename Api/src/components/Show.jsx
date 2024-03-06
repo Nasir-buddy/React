@@ -1,11 +1,11 @@
-import axios from 'axios';
+import axios from '../utils/axios';
 import React, { useEffect, useState } from 'react'
 
 function Show() {
     const [product, setProductData] = useState([]);
     // Data fetching function 
     const getapi = () => {
-        const api = 'https://fakestoreapi.com/products';
+        const api = '/products';
         axios
             .get(api)
             .then((product) => {
@@ -13,10 +13,9 @@ function Show() {
             })
             .catch((error) => console.log(error));
     }
-    // Data posting function \
-
+    // Data posting function 
     const postapi = () => {
-        const api = 'https://fakestoreapi.com/products';
+        const api = '/products';
         axios.post(api, {
             title: 'Nasir Ali',
             price: 13.5,

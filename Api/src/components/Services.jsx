@@ -1,9 +1,23 @@
+import axios from '../utils/axios';
 import React, { useEffect, useState } from 'react'
 
 function Services() {
     const [first, setFirst] = useState("This is normal data");
     const [second, setSecond] = useState("This is very large data");
+
+    const getusers = () => {
+        const api = '/users';
+        axios
+            .get(api)
+            .then((users) => {
+                // setProductData(product.data);
+                console.log(users)
+            })
+            .catch((error) => console.log(error));
+    }
+
     useEffect(()=>{
+        getusers();
         console.log("Service component is created");
         return ()=>{
             console.log("Service component is destroyed");
