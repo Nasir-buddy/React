@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Show() {
     const [product, setProductData] = useState([]);
@@ -29,11 +29,12 @@ function Show() {
             })
             .catch((error) => console.log(error));
     }
-    console.log(product);
+    useEffect(()=>{
+        getapi();
+    })
     return (
         <>
             <div className='p-4 flex gap-3'>
-                <button onClick={getapi} className='px-2 py-3 bg-red-300 rounded-md'>Call API</button>
                 <button onClick={postapi} className='px-2 py-3 bg-red-300 rounded-md'>Add data to API</button>
             </div>
             <hr className='my-10' />
