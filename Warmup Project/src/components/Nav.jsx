@@ -28,12 +28,5 @@ function Nav() {
   )
 }
 
-<div class="h-[100svh] flex items-center justify-center">
-  <div
-    class="">
-    <span>Hover Over Me</span>
-  </div>
-</div>
-
 export default Nav
 
