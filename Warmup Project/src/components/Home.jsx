@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Nav from './Nav'
 import { Link } from 'react-router-dom'
-
+import { ProductContext } from '../context/Context';
+import Loading from './Loading';
 function Home() {
-    return (
+    const [products] = useContext(ProductContext);
+    console.log(products);
+    return products ? (
         <>
         <Nav/>
         <h1 className='absolute left-1/2 -transform-x-[50%] -transform-y-[50%] mt-[2.5%] font-semibold font-sans text-[1.2rem]'>Created by Nasir Ali❤️</h1>
@@ -16,7 +19,7 @@ function Home() {
             </Link>
         </div>
         </>
-    )
+    ) : <Loading />
 }
 
 export default Home
