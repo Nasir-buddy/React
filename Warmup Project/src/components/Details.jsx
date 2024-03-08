@@ -9,8 +9,8 @@ function Details() {
             <h2 className='text-[1.5rem] font-semibold mb-7 text-red-500'>$109.95</h2>
             <p className='text-[1.5rem] font-semibold mb-7'> Descripstion : Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday</p>
             <h2 className='text-[1.5rem] font-semibold text-zinc-500 mb-7'> Category : men's clothing</h2>
-            <Link>Edit</Link>
-            <Link>Delete</Link>
+            <Link className='py-1 px-3 mr-5 border-[5px] border-blue-200 rounded-lg mb-3 font-semibold'>Edit</Link>
+            <Link className='py-1 px-3 border-[5px] border-red-200 rounded-lg mb-3 font-semibold'>Delete</Link>
         </div>
     </div>
   )
