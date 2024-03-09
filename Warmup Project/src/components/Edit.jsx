@@ -1,15 +1,22 @@
-import React, { useContext, useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import { ProductContext } from '../context/Context';
 
 function Edit() {
-    const navigate = useNavigate(); 
     const [products, setProducts] = useContext(ProductContext);
+    const navigate = useNavigate(); 
+    const { id } = useParams();
+    const [product, setProduct] = useState(null);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
+
+    useEffect(()=>{
+        setProduct(products.filter((p) => p.id == id)[0]);
+    }, [id])
+    console.log(product);
 
     const addProductHandler = (e) => {
         e.preventDefault();
@@ -47,7 +54,7 @@ function Edit() {
                         onChange={(item) =>
                             setImage(item.target.value)
                         }
-                        value={image}
+                        value={product && product.image}
                     />
                     <label for="url" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >Image Link</label>
@@ -59,7 +66,7 @@ function Edit() {
                         onChange={(item) =>
                             setTitle(item.target.value)
                         }
-                        value={title}
+                        value={product && product.title}
                     />
                     <label for="title" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >Title</label>
@@ -73,7 +80,7 @@ function Edit() {
                             onChange={(item) =>
                                 setCategory(item.target.value)
                             }
-                            value={category}
+                            value={product && product.category}
                         />
                         <label for="category" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         >Category</label>
@@ -85,7 +92,7 @@ function Edit() {
                             onChange={(item) =>
                                 setPrice(item.target.value)
                             }
-                            value={price}
+                            value={product && product.price}
                         />
                         <label for="Price" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         >Price</label>
@@ -101,7 +108,7 @@ function Edit() {
                             onChange={(item) =>
                                 setDescription(item.target.value)
                             }
-                            value={description}
+                            value={product && product.description}
                         ></textarea>
                         <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Description</label>
                     </div>
