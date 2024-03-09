@@ -1,16 +1,15 @@
 import axios from '../context/axios';
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Loading from './Loading';
 import Button from './Button';
 import { ProductContext } from '../context/Context';
 
 function Details() {
+  const navigate = useNavigate();
   const [products, setProducts] = useContext(ProductContext);
   const [product, setProduct] = useState(null);
   const { id } = useParams();
-
-
 
   // const getSingleProduct = async () => {
   //   try {
@@ -22,12 +21,18 @@ function Details() {
   // }
 
   useEffect(() => {
-    if(!product){
+    if (!product) {
       setProduct(products.filter((p) => p.id == id)[0]);
     }
     // getSingleProduct();
   }, []);
 
+  const productDeleteHandler = (id) => {
+    const filteredProducts = products.filter((p) => p.id !== id);;
+    setProducts(filteredProducts);
+    localStorage.setItem('products', JSON.stringify(filteredProducts));
+    navigate('/');
+  }
   return product ? (
     <div className='w-[95%] h-full m-auto flex p-[10%] items-center '>
       <img className='object-contain w-[50%] h-[100%] mr-10' src={`${product.image}`} alt="" />
@@ -37,7 +42,7 @@ function Details() {
         <p className='text-[1.5rem] font-semibold mb-7'>{product.description}</p>
         <h2 className='text-[1.5rem] font-semibold text-zinc-500 mb-7'>{product.category}</h2>
         <Link className='py-1 px-3 mr-5 border-[5px] border-blue-200 rounded-lg mb-3 font-semibold'>Edit</Link>
-        <Link className='py-1 px-3 border-[5px] border-red-200 rounded-lg mb-3 font-semibold'>Delete</Link>
+        <button onClick={() => productDeleteHandler(product.id)} className='py-1 px-3 border-[5px] border-red-200 rounded-lg mb-3 font-semibold'>Delete</button>
       </div>
       <div className='absolute -mt-[44vw]'>
         <Link to='/' class="relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-cyan-600 border-2 border-cyan-600 rounded-full hover:text-white group hover:bg-gray-50">
