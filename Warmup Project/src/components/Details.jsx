@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import Loading from './Loading';
 import Button from './Button';
 import { ProductContext } from '../context/Context';
+import { toast } from 'react-toastify';
 
 function Details() {
   const navigate = useNavigate();
@@ -27,10 +28,12 @@ function Details() {
     // getSingleProduct();
   }, []);
 
+  const notifyDelete = () => toast("Product deleted Successfully");
   const productDeleteHandler = (id) => {
     const filteredProducts = products.filter((p) => p.id !== id);;
     setProducts(filteredProducts);
     localStorage.setItem('products', JSON.stringify(filteredProducts));
+    notifyDelete();
     navigate('/');
   }
   return product ? (
@@ -41,7 +44,7 @@ function Details() {
         <h2 className='text-[1.5rem] font-semibold mb-7 text-red-500'>$ {product.price}</h2>
         <p className='text-[1.5rem] font-semibold mb-7'>{product.description}</p>
         <h2 className='text-[1.5rem] font-semibold text-zinc-500 mb-7'>{product.category}</h2>
-        <Link className='py-1 px-3 mr-5 border-[5px] border-blue-200 rounded-lg mb-3 font-semibold'>Edit</Link>
+        <Link to={`/edit/${product.id}`} className='py-1 px-3 mr-5 border-[5px] border-blue-200 rounded-lg mb-3 font-semibold'>Edit</Link>
         <button onClick={() => productDeleteHandler(product.id)} className='py-1 px-3 border-[5px] border-red-200 rounded-lg mb-3 font-semibold'>Delete</button>
       </div>
       <div className='absolute -mt-[44vw]'>
