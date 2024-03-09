@@ -12,9 +12,19 @@ function Create() {
 
     const addProductHandler = (e) => {
         e.preventDefault();
+        if (title.trim().length < 5 ||
+            description.trim().length < 5 ||
+            price.trim().length < 1 ||
+            category.trim().length < 5 ||
+            image.trim().length < 5) {
+            alert("Every feild should be filled with data.");
+            return;
+        }
+
+
         const product = {
             id: nanoid(),
-            title, image, price, category, description, 
+            title, image, price, category, description,
         };
         setProducts([...products, product]);
         console.log(product)
