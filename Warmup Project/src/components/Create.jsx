@@ -28,6 +28,10 @@ function Create() {
             title, image, price, category, description,
         };
         setProducts([...products, product]);
+        localStorage.setItem(
+            "products", 
+            JSON.stringify([...products, product])
+        );
         navigate('/');
     };
 
