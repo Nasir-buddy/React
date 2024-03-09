@@ -45,14 +45,11 @@ function Edit() {
 
         // storing the copied data and changing the original data. 
         copyData[pi] = { ...product[pi], ...product }
-
-        console.log(copyData)
         setProducts(copyData);
         localStorage.setItem("products", JSON.stringify(copyData));
         navigate(-1);
     };
 
-    console.log(products);
     return (
         <div onClick={addProductHandler} className='h-full w-full flex p-5 justify-center'>
             <form class="w-1/2 mt-[5%]">
@@ -122,9 +119,9 @@ function Edit() {
                 <div className='w-1/2 flex gap-5'>
                     <button type='submit' class="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-white rounded hover:bg-white group">
                         <span class="w-48 h-48 rounded rotate-[-40deg] bg-cyan-600 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-                        <span class="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">Added Product</span>
+                        <span class="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">Click to edit</span>
                     </button>
-                    <Link to='/' class="relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-cyan-600 border-2 border-cyan-600 rounded-full hover:text-white group hover:bg-gray-50">
+                    <Link to={-1} class="relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-cyan-600 border-2 border-cyan-600 rounded-full hover:text-white group hover:bg-gray-50">
                         <span class="absolute left-0 block w-full h-0 transition-all bg-cyan-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
                         <span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>

@@ -16,15 +16,19 @@ function Home() {
         try {
             const { data } = await axios.get(`/products/category/${category}`);
             setFilterProducts(data);
-            console.log(data);
         } catch (error) {
             console.log(error);
         }
     }
 
     useEffect(() => {
-        if (!filteredProducts) { setFilterProducts(products) };
-        if (category != "undefined") getProductsCategory();
+        if (!filteredProducts || category == "undefined") { setFilterProducts(products) };
+        if (category != "undefined") {
+            
+            // getProductsCategory()
+            setFilterProducts(products.filter(p => p.category == category ));
+
+        };
     }, [category, products])
 
     return products ? (
@@ -37,7 +41,7 @@ function Home() {
                             hover:scale-105  duration-300 p-4 bg-zinc-200 hover:text-cyan-600'>
                         <div className='h-[80%] w-full bg-contain bg-no-repeat bg-center mb-2 rounded-lg'
                             style={{ backgroundImage: `url(${item.image})` }}></div>
-                        <h1 className='font-semibold text-center'>${item.title}</h1>
+                        <h1 className='font-semibold text-center'>{item.title}</h1>
                     </Link>
                 })}
             </div>
