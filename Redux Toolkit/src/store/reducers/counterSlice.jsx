@@ -10,10 +10,10 @@ export const counterSlice = createSlice({
     initialState,
     reducers: {
         increment: (state) => {
-            state.value += 1
+            state.value++
         },
         decrement: (state) => {
-            state.value -= 1
+            state.value--
         },
         incrementByAmount: (state, action) => {
             console.log(action);
@@ -23,5 +23,12 @@ export const counterSlice = createSlice({
 });
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions
+
+export const incrementAsync = (amount) => (dispatch) => {
+    setTimeout(() => {
+        
+      dispatch(incrementByAmount(amount))
+    }, 2000)
+  }
 
 export default counterSlice.reducer
