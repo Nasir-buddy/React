@@ -8,7 +8,7 @@ function Services() {
     const getusers = () => {
         const api = '/users';
         axios
-            .get(api)
+            .get('users')
             .then((users) => {
                 // setProductData(product.data);
                 console.log(users)

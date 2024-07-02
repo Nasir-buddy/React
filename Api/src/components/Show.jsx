@@ -7,7 +7,7 @@ function Show() {
     const getapi = () => {
         const api = '/products';
         axios
-            .get(api)
+            .get('products')
             .then((product) => {
                 setProductData(product.data);
             })

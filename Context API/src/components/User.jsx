@@ -9,7 +9,7 @@ function User() {
       <h1 className='text-xl m-2'>User List</h1>
       <div className='w-1/4 bg-blue-200 rounded-md p-1 m-2'>
         {user.map((u)=>(
-          <Link to={'/user/${u.id}'} className='flex m-2 bg-red-200 rounded-md p-2'>
+          <Link key={u.id} to={'/user/${u.id}'} className='flex m-2 bg-red-200 rounded-md p-2'>
           {u.username}
           </Link>
         ))}
